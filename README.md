@@ -53,22 +53,23 @@ Four question sets over four public-domain novels: one answerable, three unanswe
 - One criterion is easier than it should be on the cross-book tier (AUC 0.634 against 0.520 on the same-book tier), because the swapped anchor occurs nowhere in the target book at all; the headline rests on the criterion that has no such shortcut
 - CI green on Python 3.9 and 3.12
 
-### 6. [`hermes-degeneracy-guard`](https://github.com/simin-yuan/hermes-degeneracy-guard) — a looping model cannot write its loop into a file
+### 6. [`hermes-degeneracy-guard`](https://github.com/simin-yuan/hermes-degeneracy-guard) — a looping model cannot quietly write its loop into a file
 
-Hermes already truncates runaway text, but it deliberately lets a provider-confirmed tool call through even when its arguments are a repetition loop. This plugin sits at `pre_tool_call` and refuses those calls before the tool runs.
+Hermes truncates runaway text, but by design it lets a provider-confirmed tool call through even when its arguments repeat. This plugin sits at `pre_tool_call`; when arguments look like a loop rather than data, it asks the user through Hermes' own approval gate instead of guessing, and unattended runs fail closed.
 
 - `hermes plugins doctor degeneracy-guard --ci`, run 2026-10-19 — `OK`, `5 hook(s)`; `hermes plugins validate` — `Validation passed`, security scan `safe`
-- 21 tests, including one that drives a degenerate call through Hermes' real plugin manager and checks it is blocked
-- CI runs against a pinned Hermes commit on Python 3.11–3.14, and weekly against Hermes main
-- Standard library only; no network, no shell, no telemetry
+- 37 tests, including the approval path driven through Hermes' real plugin manager and a corpus of legitimate repetitive data that must not prompt
+- Two hold-out sets with the numbers as measured, misses included
+- CI on Python 3.11–3.14 against a pinned Hermes commit, and weekly against Hermes main; standard library only
 
 ### 7. [`authority-chain`](https://github.com/simin-yuan/authority-chain) — every rewrite an agent makes to its own rules is auditable
 
 A hash-chained SQLite event log. A write must name the revision it read, or it is refused; a stale write is queued, not lost; protected documents need a human countersign bound to the exact content.
 
 - README quick start, run verbatim in an empty environment in CI — ends with `chain_status INTACT`
-- 25 tests; CI green on Python 3.9 / 3.11 / 3.13
-- Every refusal has a named code, documented in `docs/errors.md`
+- 87 tests; every refusal code in `docs/errors.md` is exercised by a test, and a test fails if a new code is documented without one
+- An installed copy keeps its ledger in the user data directory, not inside the package
+- CI on Python 3.9 / 3.11 / 3.13; no runtime dependencies
 
 ---
 
@@ -102,7 +103,7 @@ Three rules follow:
 
 [GitHub](https://github.com/simin-yuan) · [ORCID 0009-0002-6843-3390](https://orcid.org/0009-0002-6843-3390) · [Google Scholar](https://scholar.google.com/citations?user=Ae_nfUYAAAAJ)
 
-### 五个公开作品
+### 七个公开作品
 
 #### 1. [`precheck`](https://github.com/simin-yuan/precheck) — 让 agent 用「它无权编写」的检查自证
 
@@ -148,6 +149,24 @@ Three rules follow:
 - 不用 LLM、不联网、不要 API key、纯标准库；考试封了 sha256，`verify` 发现记录的阈值与代码不符就报红
 - 有一条判据在跨书档上比它该有的更容易（AUC 0.634，同书档 0.520），因为换过去的锚点在目标书里完全不出现；头条压在没这条捷径的判据上
 - CI 在 Python 3.9 / 3.12 全绿
+
+#### 6. [`hermes-degeneracy-guard`](https://github.com/simin-yuan/hermes-degeneracy-guard) —— 陷入死循环的模型，没法悄悄把循环写进文件
+
+Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就算参数在重复，也会特意放行。这个插件挂在 `pre_tool_call` 上：参数看起来像循环、不像数据时，它不替用户做决定，而是借 Hermes 自带的审批机制请用户确认；没人值守时，默认拦下。
+
+- 2026-10-19 运行 `hermes plugins doctor degeneracy-guard --ci`：OK，5 个钩子；`hermes plugins validate` 通过，安全扫描 safe
+- 37 个测试，包括用 Hermes 真实插件管理器驱动的确认流程，以及一套「不能被打扰」的正常重复数据语料
+- 两套留出集，按实测数字如实公布，包括漏判
+- CI 在钉住的 Hermes 版本上跑 Python 3.11–3.14，每周再对 Hermes 主干跑一次；只用标准库
+
+#### 7. [`authority-chain`](https://github.com/simin-yuan/authority-chain) —— Agent 每一次改写自己的规则，都可审计
+
+一个用哈希链串起来的 SQLite 事件日志。写入必须写明读到的版本号，否则拒绝；过期的写入进入冲突队列，不会丢失；受保护的文档需要人工会签，签名绑定具体内容。
+
+- CI 在空白环境里原样运行 README 快速上手，以 `chain_status INTACT` 结束
+- 87 个测试；`docs/errors.md` 里每个拒绝码都有测试覆盖，新增的码没有测试就会让测试失败
+- 安装后账本存放在用户数据目录，不放在包目录里
+- CI 跑 Python 3.9 / 3.11 / 3.13；没有运行时依赖
 
 ### 我在做什么
 
