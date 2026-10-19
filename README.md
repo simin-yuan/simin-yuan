@@ -6,7 +6,7 @@
 
 ---
 
-## Seven public works
+## Eight public works
 
 ### 1. [`precheck`](https://github.com/simin-yuan/precheck) — an agent cannot pass a check it was not allowed to write
 
@@ -71,14 +71,25 @@ A hash-chained SQLite event log. A write must name the revision it read, or it i
 - An installed copy keeps its ledger in the user data directory, not inside the package
 - CI on Python 3.9 / 3.11 / 3.13; no runtime dependencies
 
+### 8. [`agent-runaway-bench`](https://github.com/simin-yuan/agent-runaway-bench) — what agent frameworks do when the model loops mid-reply
+
+One fake endpoint speaking both OpenAI wires, and the same measurement for every framework: whether the client sends an output cap, and how much it reads before hanging up.
+
+- At `5fc490e`, Hermes's chat-completions stream stops the loop at 16,074 characters; the other five clients, across four frameworks, read all 300,048 and hand the loop back as the answer
+- Hermes's own Bedrock and Codex streams missed the guard at that commit; reported upstream as [#141477](https://github.com/NousResearch/hermes-agent/issues/141477) with a fix in [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
+- Standard library only, no keys, no spend; `loop_server.py` is the whole harness
+
 ---
 
 ## Upstream contributions
 
 Issues and pull requests sent to projects I do not own are kept in [`upstream-contributions`](https://github.com/simin-yuan/upstream-contributions): the text as filed, the text as it stands now, the patches, the raw API payloads, and the output produced while the work was done. A platform record is not permanent — a repository can be renamed or made private, a comment can be edited, a pull request can turn into a 404. That repository is the copy that does not depend on someone else's server.
 
-- NousResearch/hermes-agent [#141340](https://github.com/NousResearch/hermes-agent/pull/141340) — make the plugin validator accept the legacy `hooks:` manifest key the loader already reads. Open; CI waits on a maintainer approving a first-time contributor's run.
-- NousResearch/hermes-agent [#141341](https://github.com/NousResearch/hermes-agent/pull/141341) — add `hermes-degeneracy-guard` to the plugin catalog. Open, ready for review.
+- NousResearch/hermes-agent · `hermes plugins validate` rejects the legacy `hooks:` manifest key that the loader accepts · [#141339](https://github.com/NousResearch/hermes-agent/issues/141339)
+- NousResearch/hermes-agent · fix(plugins): validate accepts the legacy hooks: manifest key the loader reads · [#141340](https://github.com/NousResearch/hermes-agent/pull/141340)
+- NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341)
+- NousResearch/hermes-agent · Bedrock and Codex streams don't cut a repetition loop mid-stream (#130551 covers chat_completions and Anthropic only) · [#141477](https://github.com/NousResearch/hermes-agent/issues/141477)
+- NousResearch/hermes-agent · fix(agent): cut runaway repetition loops mid-stream on Bedrock and Codex · [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
 
 The record is archived and citable: [10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460).
 
@@ -114,7 +125,7 @@ Three rules follow:
 
 [GitHub](https://github.com/simin-yuan) · [ORCID 0009-0002-6843-3390](https://orcid.org/0009-0002-6843-3390) · [Google Scholar](https://scholar.google.com/citations?user=Ae_nfUYAAAAJ)
 
-### 七个公开作品
+### 八个公开作品
 
 #### 1. [`precheck`](https://github.com/simin-yuan/precheck) — 让 agent 用「它无权编写」的检查自证
 
@@ -179,12 +190,23 @@ Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就�
 - 安装后账本存放在用户数据目录，不放在包目录里
 - CI 跑 Python 3.9 / 3.11 / 3.13；没有运行时依赖
 
+#### 8. [`agent-runaway-bench`](https://github.com/simin-yuan/agent-runaway-bench) — 模型在回复中途陷进循环时，各家框架怎么办
+
+一个假端点同时说两种 OpenAI 线路，所有框架用同一把尺子量：客户端有没有自带输出上限，以及它读了多长才挂断。
+
+- `5fc490e` 时，Hermes 的 chat-completions 通道在 16,074 字符处掐断；其余四个框架的五个客户端把 300,048 字符全读完，把循环原样当成答案
+- Hermes 自己的 Bedrock 与 Codex 通道在该提交上漏了这个守卫；已作为 [#141477](https://github.com/NousResearch/hermes-agent/issues/141477) 报给上游，修复在 [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
+- 纯标准库、不要 key、不花钱；整个装置就是 `loop_server.py`
+
 ### 上游贡献
 
 提给不属于我的项目的 issue 和 PR，都留了一份在 [`upstream-contributions`](https://github.com/simin-yuan/upstream-contributions)：提交当时的原文、现在平台上的原文、补丁、API 原始返回，以及当时实际跑出来的输出。平台上的记录不保证长期存在——仓库可能改名、转私有，评论可能被编辑，PR 可能变成 404；那一份是我自己的副本，不依赖别人的服务器。
 
-- NousResearch/hermes-agent [#141340](https://github.com/NousResearch/hermes-agent/pull/141340) —— 让插件校验器接受加载器本来就认的旧式 `hooks:` 清单键。已开；CI 在等维护者批准首次贡献者的运行。
-- NousResearch/hermes-agent [#141341](https://github.com/NousResearch/hermes-agent/pull/141341) —— 把 `hermes-degeneracy-guard` 加进插件目录。已开，可评审。
+- NousResearch/hermes-agent · `hermes plugins validate` rejects the legacy `hooks:` manifest key that the loader accepts · [#141339](https://github.com/NousResearch/hermes-agent/issues/141339)
+- NousResearch/hermes-agent · fix(plugins): validate accepts the legacy hooks: manifest key the loader reads · [#141340](https://github.com/NousResearch/hermes-agent/pull/141340)
+- NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341)
+- NousResearch/hermes-agent · Bedrock and Codex streams don't cut a repetition loop mid-stream (#130551 covers chat_completions and Anthropic only) · [#141477](https://github.com/NousResearch/hermes-agent/issues/141477)
+- NousResearch/hermes-agent · fix(agent): cut runaway repetition loops mid-stream on Bedrock and Codex · [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
 
 这份记录有永久编号，可以被引用：[10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460)。
 
