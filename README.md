@@ -171,4 +171,4 @@ Three rules follow:
 
 ---
 
-— Simin Yuan
+— Simin (Simon) Yuan
