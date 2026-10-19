@@ -73,6 +73,15 @@ A hash-chained SQLite event log. A write must name the revision it read, or it i
 
 ---
 
+## Upstream contributions
+
+Issues and pull requests sent to projects I do not own are kept in [`upstream-contributions`](https://github.com/simin-yuan/upstream-contributions): the text as filed, the text as it stands now, the patches, the raw API payloads, and the output produced while the work was done. A platform record is not permanent — a repository can be renamed or made private, a comment can be edited, a pull request can turn into a 404. That repository is the copy that does not depend on someone else's server.
+
+- NousResearch/hermes-agent [#141340](https://github.com/NousResearch/hermes-agent/pull/141340) — make the plugin validator accept the legacy `hooks:` manifest key the loader already reads. Open; CI waits on a maintainer approving a first-time contributor's run.
+- NousResearch/hermes-agent [#141341](https://github.com/NousResearch/hermes-agent/pull/141341) — add `hermes-degeneracy-guard` to the plugin catalog. Open, ready for review.
+
+---
+
 ## What I work on
 
 **An AI system earns trust to the extent that it lets you check where it went wrong.**
@@ -167,6 +176,13 @@ Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就�
 - 87 个测试；`docs/errors.md` 里每个拒绝码都有测试覆盖，新增的码没有测试就会让测试失败
 - 安装后账本存放在用户数据目录，不放在包目录里
 - CI 跑 Python 3.9 / 3.11 / 3.13；没有运行时依赖
+
+### 上游贡献
+
+提给不属于我的项目的 issue 和 PR，都留了一份在 [`upstream-contributions`](https://github.com/simin-yuan/upstream-contributions)：提交当时的原文、现在平台上的原文、补丁、API 原始返回，以及当时实际跑出来的输出。平台上的记录不保证长期存在——仓库可能改名、转私有，评论可能被编辑，PR 可能变成 404；那一份是我自己的副本，不依赖别人的服务器。
+
+- NousResearch/hermes-agent [#141340](https://github.com/NousResearch/hermes-agent/pull/141340) —— 让插件校验器接受加载器本来就认的旧式 `hooks:` 清单键。已开；CI 在等维护者批准首次贡献者的运行。
+- NousResearch/hermes-agent [#141341](https://github.com/NousResearch/hermes-agent/pull/141341) —— 把 `hermes-degeneracy-guard` 加进插件目录。已开，可评审。
 
 ### 我在做什么
 
