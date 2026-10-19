@@ -112,7 +112,7 @@ Three rules follow:
 ## Publications
 
 - *Volume or Coupling? A Scale-Dependent Dissociation in Constraint Recovery of Language-Model Loops.* Zenodo, 2026-07-05. DOI [10.5281/zenodo.21200851](https://doi.org/10.5281/zenodo.21200851)
-- *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop.* Research Square, 2026-10-08. DOI [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1)
+- *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop.* Simin Yuan. Research Square, 2026-10-08. DOI [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1)
 - *Can One Agent Restore Another? Multi-Agent Verification Through Independent Constraint Sources.* Research Square, 2026-08-13. DOI [10.21203/rs.3.rs-10651733/v1](https://doi.org/10.21203/rs.3.rs-10651733/v1)
 
 [ORCID](https://orcid.org/0009-0002-6843-3390) · [Google Scholar](https://scholar.google.com/citations?user=Ae_nfUYAAAAJ)
@@ -225,7 +225,7 @@ Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就�
 ### 论文
 
 - *Volume or Coupling? A Scale-Dependent Dissociation in Constraint Recovery of Language-Model Loops.* Zenodo，2026-07-05。DOI [10.5281/zenodo.21200851](https://doi.org/10.5281/zenodo.21200851)
-- *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop.* Research Square，2026-10-08。DOI [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1)
+- *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop.* Simin Yuan. Research Square，2026-10-08。DOI [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1)
 - *Can One Agent Restore Another? Multi-Agent Verification Through Independent Constraint Sources.* Research Square，2026-08-13。DOI [10.21203/rs.3.rs-10651733/v1](https://doi.org/10.21203/rs.3.rs-10651733/v1)
 
 [ORCID](https://orcid.org/0009-0002-6843-3390) · [Google Scholar](https://scholar.google.com/citations?user=Ae_nfUYAAAAJ)
