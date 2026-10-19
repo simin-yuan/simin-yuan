@@ -80,6 +80,8 @@ Issues and pull requests sent to projects I do not own are kept in [`upstream-co
 - NousResearch/hermes-agent [#141340](https://github.com/NousResearch/hermes-agent/pull/141340) — make the plugin validator accept the legacy `hooks:` manifest key the loader already reads. Open; CI waits on a maintainer approving a first-time contributor's run.
 - NousResearch/hermes-agent [#141341](https://github.com/NousResearch/hermes-agent/pull/141341) — add `hermes-degeneracy-guard` to the plugin catalog. Open, ready for review.
 
+The record is archived and citable: [10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460).
+
 ---
 
 ## What I work on
@@ -183,6 +185,8 @@ Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就�
 
 - NousResearch/hermes-agent [#141340](https://github.com/NousResearch/hermes-agent/pull/141340) —— 让插件校验器接受加载器本来就认的旧式 `hooks:` 清单键。已开；CI 在等维护者批准首次贡献者的运行。
 - NousResearch/hermes-agent [#141341](https://github.com/NousResearch/hermes-agent/pull/141341) —— 把 `hermes-degeneracy-guard` 加进插件目录。已开，可评审。
+
+这份记录有永久编号，可以被引用：[10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460)。
 
 ### 我在做什么
 
