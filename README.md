@@ -84,7 +84,7 @@ One fake endpoint speaking both OpenAI wires, and the same measurement for every
 A Hermes plugin that checks every memory and skill write for sentences like "the user decided …" or "用户决定 …" and asks for the user's own words: a quote that appears verbatim in what the user typed this session, shares key words with the decision, and does not drop a negation.
 
 - Observe mode by default: flagged writes are recorded and `report` lists them; block mode refuses them and tells the model how to fix the write
-- Measured on 133 lines an independent reviewer wrote and labelled before reading the code: precision 1.000, recall 0.694, published with the misses
+- Measured on [133 lines an independent reviewer wrote and labelled before reading the code](https://github.com/simin-yuan/hermes-provenance-gate#measured-accuracy): precision 1.000, recall 0.694, published with the misses
 - Three independent audits; every bypass they found is now a test, end to end through a real Hermes agent
 
 ---
@@ -98,7 +98,7 @@ Issues and pull requests sent to projects I do not own are kept in [`upstream-co
 - NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341)
 - NousResearch/hermes-agent · Bedrock and Codex streams don't cut a repetition loop mid-stream (#130551 covers chat_completions and Anthropic only) · [#141477](https://github.com/NousResearch/hermes-agent/issues/141477)
 - NousResearch/hermes-agent · fix(agent): cut runaway repetition loops mid-stream on Bedrock and Codex · [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
-- NousResearch/hermes-agent · feat(plugin-catalog): add provenance-gate · [#141935](https://github.com/NousResearch/hermes-agent/pull/141935)
+- NousResearch/hermes-agent · feat(plugin-catalog): add provenance-gate · [#141935](https://github.com/NousResearch/hermes-agent/pull/141935) · **merged 2026-10-20** by @teknium1
 
 The record is archived and citable: [10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460).
 
