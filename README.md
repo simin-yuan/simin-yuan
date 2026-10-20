@@ -6,7 +6,7 @@
 
 ---
 
-## Eight public works
+## Nine public works
 
 ### 1. [`precheck`](https://github.com/simin-yuan/precheck) — an agent cannot pass a check it was not allowed to write
 
@@ -79,6 +79,14 @@ One fake endpoint speaking both OpenAI wires, and the same measurement for every
 - Hermes's own Bedrock and Codex streams missed the guard at that commit; reported upstream as [#141477](https://github.com/NousResearch/hermes-agent/issues/141477) with a fix in [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
 - Standard library only, no keys, no spend; `loop_server.py` is the whole harness
 
+### 9. [`hermes-provenance-gate`](https://github.com/simin-yuan/hermes-provenance-gate) — an agent cannot quietly record a decision the user never made
+
+A Hermes plugin that checks every memory and skill write for sentences like "the user decided …" or "用户决定 …" and asks for the user's own words: a quote that appears verbatim in what the user typed this session, shares key words with the decision, and does not drop a negation.
+
+- Observe mode by default: flagged writes are recorded and `report` lists them; block mode refuses them and tells the model how to fix the write
+- Measured on 133 lines an independent reviewer wrote and labelled before reading the code: precision 1.000, recall 0.694, published with the misses
+- Three independent audits; every bypass they found is now a test, end to end through a real Hermes agent
+
 ---
 
 ## Upstream contributions
@@ -90,6 +98,7 @@ Issues and pull requests sent to projects I do not own are kept in [`upstream-co
 - NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341)
 - NousResearch/hermes-agent · Bedrock and Codex streams don't cut a repetition loop mid-stream (#130551 covers chat_completions and Anthropic only) · [#141477](https://github.com/NousResearch/hermes-agent/issues/141477)
 - NousResearch/hermes-agent · fix(agent): cut runaway repetition loops mid-stream on Bedrock and Codex · [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
+- NousResearch/hermes-agent · feat(plugin-catalog): add provenance-gate · [#141935](https://github.com/NousResearch/hermes-agent/pull/141935)
 
 The record is archived and citable: [10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460).
 
@@ -125,7 +134,7 @@ Three rules follow:
 
 [GitHub](https://github.com/simin-yuan) · [ORCID 0009-0002-6843-3390](https://orcid.org/0009-0002-6843-3390) · [Google Scholar](https://scholar.google.com/citations?user=Ae_nfUYAAAAJ)
 
-### 八个公开作品
+### 九个公开作品
 
 #### 1. [`precheck`](https://github.com/simin-yuan/precheck) — 让 agent 用「它无权编写」的检查自证
 
@@ -198,6 +207,14 @@ Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就�
 - Hermes 自己的 Bedrock 与 Codex 通道在该提交上漏了这个守卫；已作为 [#141477](https://github.com/NousResearch/hermes-agent/issues/141477) 报给上游，修复在 [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
 - 纯标准库、不要 key、不花钱；整个装置就是 `loop_server.py`
 
+#### 9. [`hermes-provenance-gate`](https://github.com/simin-yuan/hermes-provenance-gate) — agent 不能悄悄记下用户从没做过的决定
+
+一个 Hermes 插件：每次写记忆或技能时，找出"用户决定……""the user decided …"这类句子，要求附上用户原话——必须逐字出现在用户本次会话里打的字中，和决定内容有共同关键词，且没有丢掉否定词。
+
+- 默认只记录、不拦截，`report` 列出所有可疑写入；打开拦截模式后直接拒绝，并告诉模型怎么改
+- 在一份独立审计员先写好、先标注、后看代码的 133 条盲测集上：查准率 1.000，查全率 0.694，漏掉的句子一并公开
+- 经过三轮独立审计；审计找到的每一个绕过办法都已写成测试，经真实 Hermes agent 端到端验证
+
 ### 上游贡献
 
 提给不属于我的项目的 issue 和 PR，都留了一份在 [`upstream-contributions`](https://github.com/simin-yuan/upstream-contributions)：提交当时的原文、现在平台上的原文、补丁、API 原始返回，以及当时实际跑出来的输出。平台上的记录不保证长期存在——仓库可能改名、转私有，评论可能被编辑，PR 可能变成 404；那一份是我自己的副本，不依赖别人的服务器。
@@ -207,6 +224,7 @@ Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就�
 - NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341)
 - NousResearch/hermes-agent · Bedrock and Codex streams don't cut a repetition loop mid-stream (#130551 covers chat_completions and Anthropic only) · [#141477](https://github.com/NousResearch/hermes-agent/issues/141477)
 - NousResearch/hermes-agent · fix(agent): cut runaway repetition loops mid-stream on Bedrock and Codex · [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
+- NousResearch/hermes-agent · feat(plugin-catalog): add provenance-gate · [#141935](https://github.com/NousResearch/hermes-agent/pull/141935)
 
 这份记录有永久编号，可以被引用：[10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460)。
 
