@@ -224,7 +224,7 @@ Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就�
 - NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341)
 - NousResearch/hermes-agent · Bedrock and Codex streams don't cut a repetition loop mid-stream (#130551 covers chat_completions and Anthropic only) · [#141477](https://github.com/NousResearch/hermes-agent/issues/141477)
 - NousResearch/hermes-agent · fix(agent): cut runaway repetition loops mid-stream on Bedrock and Codex · [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
-- NousResearch/hermes-agent · feat(plugin-catalog): add provenance-gate · [#141935](https://github.com/NousResearch/hermes-agent/pull/141935)
+- NousResearch/hermes-agent · feat(plugin-catalog): add provenance-gate · [#141935](https://github.com/NousResearch/hermes-agent/pull/141935) · **merged 2026-10-20** by @teknium1
 
 这份记录有永久编号，可以被引用：[10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460)。
 
