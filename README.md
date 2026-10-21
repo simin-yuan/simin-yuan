@@ -6,7 +6,7 @@
 
 ---
 
-## Nine public works
+## Ten public works
 
 ### 1. [`precheck`](https://github.com/simin-yuan/precheck) — an agent cannot pass a check it was not allowed to write
 
@@ -87,6 +87,14 @@ A Hermes plugin that checks every memory and skill write for sentences like "the
 - Measured on [133 lines an independent reviewer wrote and labelled before reading the code](https://github.com/simin-yuan/hermes-provenance-gate#measured-accuracy): precision 1.000, recall 0.694, published with the misses
 - Three independent audits; every bypass they found is now a test, end to end through a real Hermes agent
 
+### 10. [`hermes-skill-lineage`](https://github.com/simin-yuan/hermes-skill-lineage) — where a skill's text came from, and whether that record still holds
+
+A Hermes plugin that records, for every skill write, the content fingerprint before and after, the sources that were present earlier in the same session, and a `seq → prev_hash → hash` chain over the entries. `trace` shows where a version came from, `descendants` goes the other way, `verify` re-walks the chain, and `head` prints a value to write down elsewhere, so a later `verify --head` can tell truncation from an intact chain.
+
+- 46 tests pass, 1 skipped; `hermes plugins validate` passes with no warnings — measured on `96ffb13` on 2026-10-21 with Python 3.11 and 3.14
+- Ran end to end in an isolated Hermes: one real session created a skill through `skill_manage`, then `status` / `trace` / `descendants` / `report` / `verify` / `head` returned as documented — raw output in [`tests/smoke-2026-10-21.txt`](https://github.com/simin-yuan/hermes-skill-lineage/blob/main/tests/smoke-2026-10-21.txt)
+- Text is never stored; the hashes are keyed per install. Catalog PR [#142381](https://github.com/NousResearch/hermes-agent/pull/142381) is open
+
 ---
 
 ## Upstream contributions
@@ -95,10 +103,11 @@ Issues and pull requests sent to projects I do not own are kept in [`upstream-co
 
 - NousResearch/hermes-agent · `hermes plugins validate` rejects the legacy `hooks:` manifest key that the loader accepts · [#141339](https://github.com/NousResearch/hermes-agent/issues/141339)
 - NousResearch/hermes-agent · fix(plugins): validate accepts the legacy hooks: manifest key the loader reads · [#141340](https://github.com/NousResearch/hermes-agent/pull/141340)
-- NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341)
+- NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341) · **merged 2026-10-20** by @teknium1
 - NousResearch/hermes-agent · Bedrock and Codex streams don't cut a repetition loop mid-stream (#130551 covers chat_completions and Anthropic only) · [#141477](https://github.com/NousResearch/hermes-agent/issues/141477)
 - NousResearch/hermes-agent · fix(agent): cut runaway repetition loops mid-stream on Bedrock and Codex · [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
 - NousResearch/hermes-agent · feat(plugin-catalog): add provenance-gate · [#141935](https://github.com/NousResearch/hermes-agent/pull/141935) · **merged 2026-10-20** by @teknium1
+- NousResearch/hermes-agent · feat(plugin-catalog): add skill-lineage · [#142381](https://github.com/NousResearch/hermes-agent/pull/142381) · **open**
 
 The record is archived and citable: [10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460).
 
@@ -133,7 +142,7 @@ Three rules follow:
 **独立研究者。做可被验证的事，并公开我被验证错了的部分。**
 
 [GitHub](https://github.com/simin-yuan) · [ORCID 0009-0002-6843-3390](https://orcid.org/0009-0002-6843-3390) · [Google Scholar](https://scholar.google.com/citations?user=Ae_nfUYAAAAJ)
-
+### 十个公开作品
 ### 九个公开作品
 
 #### 1. [`precheck`](https://github.com/simin-yuan/precheck) — 让 agent 用「它无权编写」的检查自证
@@ -215,16 +224,25 @@ Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就�
 - 在一份独立审计员先写好、先标注、后看代码的 133 条盲测集上：查准率 1.000，查全率 0.694，漏掉的句子一并公开
 - 经过三轮独立审计；审计找到的每一个绕过办法都已写成测试，经真实 Hermes agent 端到端验证
 
+#### 10. [`hermes-skill-lineage`](https://github.com/simin-yuan/hermes-skill-lineage) — 技能的文字从哪来，这份记录是否还对得上
+
+一个 Hermes 插件：每次写技能，记下写入前后的内容指纹、同一会话里更早出现的来源文本，以及一条 `seq → prev_hash → hash` 链。`trace` 查某个版本从哪来，`descendants` 反过来查一个来源进了哪些技能，`verify` 重走整条链，`head` 打出一串可以抄到别处的值，事后能分清"被截断"和"链是完整的"。
+
+- 实测 46 个测试通过、1 个跳过，`hermes plugins validate` 零警告 —— 2026-10-21 在 `96ffb13` 上测，Python 3.11 与 3.14
+- 在隔离的 Hermes 里端到端跑过：一次真实会话经 `skill_manage` 建出技能，再依次跑 `status` / `trace` / `descendants` / `report` / `verify` / `head`，输出与文档一致，原始日志在 [`tests/smoke-2026-10-21.txt`](https://github.com/simin-yuan/hermes-skill-lineage/blob/main/tests/smoke-2026-10-21.txt)
+- 不存正文，只存按装机密钥算的哈希；上游目录 PR [#142381](https://github.com/NousResearch/hermes-agent/pull/142381) 开着
+
 ### 上游贡献
 
 提给不属于我的项目的 issue 和 PR，都留了一份在 [`upstream-contributions`](https://github.com/simin-yuan/upstream-contributions)：提交当时的原文、现在平台上的原文、补丁、API 原始返回，以及当时实际跑出来的输出。平台上的记录不保证长期存在——仓库可能改名、转私有，评论可能被编辑，PR 可能变成 404；那一份是我自己的副本，不依赖别人的服务器。
 
 - NousResearch/hermes-agent · `hermes plugins validate` rejects the legacy `hooks:` manifest key that the loader accepts · [#141339](https://github.com/NousResearch/hermes-agent/issues/141339)
 - NousResearch/hermes-agent · fix(plugins): validate accepts the legacy hooks: manifest key the loader reads · [#141340](https://github.com/NousResearch/hermes-agent/pull/141340)
-- NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341)
+- NousResearch/hermes-agent · feat(plugin-catalog): add degeneracy-guard · [#141341](https://github.com/NousResearch/hermes-agent/pull/141341) · **merged 2026-10-20** by @teknium1
 - NousResearch/hermes-agent · Bedrock and Codex streams don't cut a repetition loop mid-stream (#130551 covers chat_completions and Anthropic only) · [#141477](https://github.com/NousResearch/hermes-agent/issues/141477)
 - NousResearch/hermes-agent · fix(agent): cut runaway repetition loops mid-stream on Bedrock and Codex · [#141479](https://github.com/NousResearch/hermes-agent/pull/141479)
 - NousResearch/hermes-agent · feat(plugin-catalog): add provenance-gate · [#141935](https://github.com/NousResearch/hermes-agent/pull/141935) · **merged 2026-10-20** by @teknium1
+- NousResearch/hermes-agent · feat(plugin-catalog): add skill-lineage · [#142381](https://github.com/NousResearch/hermes-agent/pull/142381) · **open**
 
 这份记录有永久编号，可以被引用：[10.5281/zenodo.23470460](https://doi.org/10.5281/zenodo.23470460)。
 
