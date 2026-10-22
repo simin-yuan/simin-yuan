@@ -143,7 +143,6 @@ Three rules follow:
 
 [GitHub](https://github.com/simin-yuan) · [ORCID 0009-0002-6843-3390](https://orcid.org/0009-0002-6843-3390) · [Google Scholar](https://scholar.google.com/citations?user=Ae_nfUYAAAAJ)
 ### 十个公开作品
-### 九个公开作品
 
 #### 1. [`precheck`](https://github.com/simin-yuan/precheck) — 让 agent 用「它无权编写」的检查自证
 
