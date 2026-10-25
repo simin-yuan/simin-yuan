@@ -267,4 +267,4 @@ Hermes 会截断失控的文本，但对于厂商已确认的工具调用，就�
 
 ---
 
-— Simin (Simon) Yuan
+— Simin Yuan
