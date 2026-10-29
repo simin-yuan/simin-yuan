@@ -43,7 +43,7 @@ Projects listed in **4 curated awesome lists** through 6 merged pull requests.
 ### Benchmarks — one fake endpoint, the same measurement for every client
 
 - **[agent-double-exec-bench](https://github.com/simin-yuan/agent-double-exec-bench)** — seven agent frameworks against a server that fails on purpose: **one 429 becomes 27 identical requests**, and some frameworks decide whether to retry by reading the error text.
-- **[agent-runaway-bench](https://github.com/simin-yuan/agent-runaway-bench)** — what clients do when the model loops mid-reply: **four clients return the entire loop as the final answer — 300,048 characters — and none of them stops.**
+- **[agent-runaway-bench](https://github.com/simin-yuan/agent-runaway-bench)** — what clients do when the model loops mid-reply: **five clients across four frameworks return the entire loop as the final answer — 300,048 characters — and none of them stops.**
 - **[agent-cutoff-bench](https://github.com/simin-yuan/agent-cutoff-bench)** — a tool call cut off mid-argument still runs: LangGraph writes **16 of 40 lines** to disk and reports success.
 - **[retrieval-abstention-bench](https://github.com/simin-yuan/retrieval-abstention-bench)** — zero-dependency abstention test: the retriever declines **86.0%** of questions that are unanswerable by construction against **3.3%** of the answerable set, a **+82.7 point** gap (95% bootstrap CI +77.7 to +87.3).
 
@@ -69,6 +69,7 @@ Projects listed in **4 curated awesome lists** through 6 merged pull requests.
 Constraint recovery in two-agent language-model loops — measured, not asserted:
 
 - *Volume or Coupling? A Scale-Dependent Dissociation in Constraint Recovery of Language-Model Loops* — Zenodo, [10.5281/zenodo.21200851](https://doi.org/10.5281/zenodo.21200851)
+  Versions of this line were accepted at four NeurIPS 2026 workshops: New in ML, EvoRobust, Resource-Aware Agentic AI (RAAAI), and CL4FMAgents.
 - *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop* — Research Square, [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1)
 
 ## How I work
