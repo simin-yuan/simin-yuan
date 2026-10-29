@@ -69,7 +69,7 @@ Projects listed in **4 curated awesome lists** through 6 merged pull requests.
 Constraint recovery in two-agent language-model loops — measured, not asserted:
 
 - *Volume or Coupling? A Scale-Dependent Dissociation in Constraint Recovery of Language-Model Loops* — Zenodo, [10.5281/zenodo.21200851](https://doi.org/10.5281/zenodo.21200851)
-  Versions of this line were accepted at four NeurIPS 2026 workshops: New in ML, EvoRobust, Resource-Aware Agentic AI (RAAAI), and CL4FMAgents.
+  - Accepted versions at four NeurIPS 2026 workshops: New in ML, EvoRobust, Resource-Aware Agentic AI (RAAAI), and CL4FMAgents.
 - *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop* — Research Square, [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1)
 
 ## How I work
