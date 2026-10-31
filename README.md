@@ -12,7 +12,19 @@ measure it reproducibly, and fix it upstream.
 - Six paper acceptances across NeurIPS 2026 workshops, on how LLM agents fail and recover
 - 3 plugins added to the official Hermes Agent plugin catalog (4 merged PRs)
 - Bugs found and fixes filed in crewAI, Hugging Face smolagents, LangChain.js, OpenAI Codex and SchemaStore
-- Credited on 3 security advisories in nexus-memory — 1 high, 2 moderate ([GHSA-2h94](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-2h94-xx3x-chrr), [GHSA-m446](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-m446-mvgq-w52p), [GHSA-455p](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-455p-688x-56r8))
+- Credited on 3 security advisories in nexus-memory — 1 high, 2 moderate ([details below](#security-advisories))
+
+## Security advisories
+
+Three issues reported privately in [nexus-memory](https://github.com/Neboy72/nexus-memory), fixed and published with regression tests, credited as finder in the advisory text.
+
+| Advisory | Issue | Severity | Fixed in |
+|---|---|---|---|
+| [GHSA-2h94-xx3x-chrr](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-2h94-xx3x-chrr) | Guardrail path rules never matched Windows paths — protected subpaths and parent deletes were allowed | High | 0.22.35 |
+| [GHSA-m446-mvgq-w52p](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-m446-mvgq-w52p) | Cubic backtracking in the destructive-command patterns of the pre-execution check | Moderate | 0.22.34 |
+| [GHSA-455p-688x-56r8](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-455p-688x-56r8) | Quadratic regex in wikilink extraction (CVSS 3.1: 6.5) | Moderate | 0.22.32 |
+
+**Write-up:** [Three security advisories in an agent memory layer](writeups/nexus-memory-advisories.md) — how each was found, the measured curve, the fix, and where every number can be checked.
 
 ## Selected upstream contributions
 
@@ -32,7 +44,7 @@ Ecosystem fixes, merged or reported upstream:
 |---|---|---|
 | [SchemaStore](https://github.com/SchemaStore/schemastore) | `package.json` accepted an empty `version` string; two `cargo.json` constraints let through detailed dependencies cargo rejects | [#6421](https://github.com/SchemaStore/schemastore/pull/6421) merged · [#6394](https://github.com/SchemaStore/schemastore/issues/6394), [#6435](https://github.com/SchemaStore/schemastore/issues/6435) reported, fixed upstream |
 | [scamgate](https://github.com/odaiameera/scamgate) | A long command line kept `extract()` busy for **about 40 seconds**; it now reads call-like text in one pass | [#21](https://github.com/odaiameera/scamgate/pull/21), [#22](https://github.com/odaiameera/scamgate/pull/22) merged |
-| [nexus-memory](https://github.com/Neboy72/nexus-memory) | Reported **3 vulnerabilities** and wrote the fixes; credited in all three advisories — guardrail path rules that never matched Windows paths (high), cubic backtracking in the destructive-command patterns, and ReDoS in wikilink extraction; Windows import failure and symlink test guard still pending | [#10](https://github.com/Neboy72/nexus-memory/issues/10), [#11](https://github.com/Neboy72/nexus-memory/pull/11), [#12](https://github.com/Neboy72/nexus-memory/pull/12) open · advisories published 2026-10-28 |
+| [nexus-memory](https://github.com/Neboy72/nexus-memory) | Reported **3 vulnerabilities** and wrote the fixes; credited in all three advisories — guardrail path rules that never matched Windows paths (high), cubic backtracking in the destructive-command patterns, and ReDoS in wikilink extraction; Windows import failure and a test-portability fix ([#12](https://github.com/Neboy72/nexus-memory/pull/12), open) | [#10](https://github.com/Neboy72/nexus-memory/issues/10), [#11](https://github.com/Neboy72/nexus-memory/pull/11), [#12](https://github.com/Neboy72/nexus-memory/pull/12) open · advisories published 2026-10-28 |
 | [Vercel](https://github.com/vercel/vercel) | `vercel.json` declares draft-04 but uses draft-06+ keywords, so strict validators reject it | [#17639](https://github.com/vercel/vercel/issues/17639) open |
 | [Compose spec](https://github.com/compose-spec/compose-go) | No schema constraint requires `image`, `build` or `provider`, yet the loader rejects a service with none of them | [#933](https://github.com/compose-spec/compose-go/issues/933) open |
 
