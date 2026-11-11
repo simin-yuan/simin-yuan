@@ -91,3 +91,6 @@ Constraint recovery in two-agent language-model loops — measured, not asserted
 - **Evidence before assertion.** Every claim in these repos ships with the command that reproduces it. When the evidence does not support the claim, the claim goes.
 - **Gates that can say no.** A check that has never failed is a check that never ran, so I sabotage my own gates to prove they go red.
 - **Publish failures.** The MISS, the regression and the broken version stay in the record. A repository that only shows wins is not evidence.
+---
+
+Part of the agent reliability toolkit → [agent-faultbench](https://github.com/simin-yuan/agent-faultbench)
