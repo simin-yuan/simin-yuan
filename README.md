@@ -13,7 +13,7 @@ Open to collaboration and relevant roles.
 ## Highlights
 
 - **33 pull requests merged in 16 upstream projects** — Microsoft agent-framework, NVIDIA NeMo (Agent Toolkit, Relay), deepset Haystack, the OWASP GenAI Security Project, ModelScope, SchemaStore, NousResearch.
-- **Six paper acceptances at NeurIPS 2026 workshops** — New in ML, EvoRobust, Resource-Aware Agentic AI, CL4FMAgents — on how LLM agents fail and recover.
+- **Six accepted versions of three manuscripts at NeurIPS 2026 workshops** — New in ML, EvoRobust, Resource-Aware Agentic AI, CL4FMAgents, AI and the Self, SocialAgent.
 - **Three plugins** accepted into the official Hermes Agent plugin catalog, and **three credited security advisories** in an agent memory layer.
 
 ## Merged upstream contributions
@@ -77,8 +77,18 @@ Verification tooling also lives in [precheck](https://github.com/simin-yuan/prec
 
 ## Papers
 
-- *Volume or Coupling? A Scale-Dependent Dissociation in Constraint Recovery of Language-Model Loops* — Zenodo, [10.5281/zenodo.21200851](https://doi.org/10.5281/zenodo.21200851). Accepted versions at four NeurIPS 2026 workshops.
-- *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop* — Research Square, [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1).
+Six accepted versions of three manuscripts, NeurIPS 2026 workshops.
+
+**One model, four workshops — constraint recovery in language-model loops**
+
+- **Volume or Coupling? A Scale-Dependent Dissociation in Constraint Recovery of Language-Model Loops** — New in ML, EvoRobust (4-page version), RAAAI (as *Volume or Coupling: What Constraint Recovery Costs*) and CL4FMAgents. At 1.5B the coupled loop beats a single model 43% to 17%, and a volume-matched single model reproduces the advantage (37%, p = .774): what looks like coupling is a context-volume effect at that scale, and across scale the dissociation reverses. [10.5281/zenodo.21200851](https://doi.org/10.5281/zenodo.21200851)
+
+**Two single-workshop papers — what an agent's history is made of, and what it can be said to own**
+
+- **Stake and Steerability: An Ontological Constraint on Artificial Agency and Subjectivity** — AI and the Self. Asks where a persistent agent's account of what it knows about its user, and about itself, actually comes from, and what of that account would survive a copy. [NeurIPS programme](https://neurips.cc/virtual/2026/175389) · [OpenReview](https://openreview.net/forum?id=Dz9oM89qgu)
+- **History Is Not Memory: Stake, continual learning, and persistent AI agents** — SocialAgent. An agent learning over 42 sessions with five simulated users, under a preregistration and two independent audits: halting, resuming or copying it left no residue down to the last stored bit, while copying the memory alone lost most of what it knew. [10.5281/zenodo.23170703](https://doi.org/10.5281/zenodo.23170703)
+
+Preprint, not a workshop paper: *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop* — [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1).
 
 ## How I work
 
