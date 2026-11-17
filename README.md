@@ -1,96 +1,91 @@
 # Simin Yuan
 
-**Founder, Light Emerge** · Agent reliability research and engineering
+**Founder, Light Emerge** · Independent researcher, agent reliability
 
-I find where AI agents fail — runaway loops, duplicate execution, truncated tool calls —
-measure it reproducibly, and fix it upstream.
+I find where AI agents fail — runaway loops, duplicate execution, tool calls cut off
+mid-argument, memory that records a decision nobody made — measure it reproducibly,
+and fix it upstream.
 
-[lightemerge.com](https://lightemerge.com) · [Google Scholar](https://scholar.google.com/citations?user=Ae_nfUYAAAAJ) · [ORCID](https://orcid.org/0009-0002-6843-3390) · [LinkedIn](https://www.linkedin.com/in/simin-yuan-2845a03bb)
+[lightemerge.com](https://lightemerge.com) · [Google Scholar](https://scholar.google.com/citations?user=Ae_nfUYAAAAJ) · [ORCID](https://orcid.org/0009-0002-6843-3390) · [LinkedIn](https://www.linkedin.com/in/simin-yuan-2845a03bb) · [X @SiminYuanAI](https://x.com/SiminYuanAI)
+
+Open to collaboration and relevant roles.
 
 ## Highlights
 
-- Six paper acceptances across NeurIPS 2026 workshops, on how LLM agents fail and recover
-- 3 plugins added to the official Hermes Agent plugin catalog (4 merged PRs)
-- Bugs found and fixes filed in crewAI, Hugging Face smolagents, LangChain.js, OpenAI Codex and SchemaStore — and **two fixes merged in NVIDIA's NeMo Agent Toolkit**
-- Credited on 3 security advisories in nexus-memory — 1 high, 2 moderate ([details below](#security-advisories))
+- **33 pull requests merged in 16 upstream projects** — Microsoft agent-framework, NVIDIA NeMo (Agent Toolkit, Relay), deepset Haystack, the OWASP GenAI Security Project, ModelScope, SchemaStore, NousResearch.
+- **Six paper acceptances at NeurIPS 2026 workshops** — New in ML, EvoRobust, Resource-Aware Agentic AI, CL4FMAgents — on how LLM agents fail and recover.
+- **Three plugins** accepted into the official Hermes Agent plugin catalog, and **three credited security advisories** in an agent memory layer.
+
+## Merged upstream contributions
+
+Merged only.
+
+| Project | PR | What changed |
+|---|---|---|
+| **microsoft/agent-framework** | [#10202](https://github.com/microsoft/agent-framework/pull/10202) | An over-long Windows path is reported as `ENAMETOOLONG`, not as a missing file |
+| | [#10200](https://github.com/microsoft/agent-framework/pull/10200) | Atomic session-snapshot replacement retries on a transient `PermissionError` |
+| **NVIDIA/NeMo-Agent-Toolkit** | [#2551](https://github.com/NVIDIA/NeMo-Agent-Toolkit/pull/2551) | `tool_calling_agent`: a tool call cut off mid-argument no longer runs |
+| | [#2553](https://github.com/NVIDIA/NeMo-Agent-Toolkit/pull/2553) | Same guard in `react_agent` with native tool calling |
+| **NVIDIA/NeMo-Relay** | [#1675](https://github.com/NVIDIA/NeMo-Relay/pull/1675) | Anthropic thinking and signature deltas are accumulated, not dropped |
+| **deepset-ai/haystack** | [#13583](https://github.com/deepset-ai/haystack/pull/13583) | Reject `NaN` scores in `MetaFieldRanker` linear-score mode |
+| **OWASP GenAI · agent-control-standard** | [#526](https://github.com/GenAI-Security-Project/agent-control-standard/pull/526) | The example Guardian refuses a repeated nonce, as spec §10.3 asks |
+| | [#525](https://github.com/GenAI-Security-Project/agent-control-standard/pull/525) | The example Guardian starts on Windows |
+| **modelscope/evalscope** | [#2075](https://github.com/modelscope/evalscope/pull/2075) | Multi-select: read bracketed labels that run together |
+| | [#2064](https://github.com/modelscope/evalscope/pull/2064) | Reasoning-safe request defaults on `api.openai.com` |
+| | [#2035](https://github.com/modelscope/evalscope/pull/2035) | One shared last-JSON-object extractor |
+| | [#2031](https://github.com/modelscope/evalscope/pull/2031) | `longpi_bench`: keep the last parseable JSON object |
+| | [#2030](https://github.com/modelscope/evalscope/pull/2030) | `zebralogicbench`: braces inside strings stay out of the object scan |
+| | [#2022](https://github.com/modelscope/evalscope/pull/2022) | `agentx`: replay local Weka mirrors through the native loader |
+| **NousResearch/hermes-agent** | [#141341](https://github.com/NousResearch/hermes-agent/pull/141341) · [#141935](https://github.com/NousResearch/hermes-agent/pull/141935) · [#142381](https://github.com/NousResearch/hermes-agent/pull/142381) | `degeneracy-guard`, `provenance-gate` and `skill-lineage` enter the official plugin catalog |
+| | [#144339](https://github.com/NousResearch/hermes-agent/pull/144339) · [#154393](https://github.com/NousResearch/hermes-agent/pull/154393) | Re-pin `provenance-gate`; bump `skill-lineage` to 0.2.0 |
+| **SchemaStore** | [#6421](https://github.com/SchemaStore/schemastore/pull/6421) | `package.json`: reject an empty `version` string |
+| **kiwicom/pytest-recording** | [#213](https://github.com/kiwicom/pytest-recording/pull/213) | Allow `socketpair` under the network-blocking guard |
+| **mindflayer/python-mocket** | [#334](https://github.com/mindflayer/python-mocket/pull/334) | Fix `socketpair()` where `_socket.socketpair` is absent |
 
 ## Security advisories
 
-Three issues reported privately in [nexus-memory](https://github.com/Neboy72/nexus-memory), fixed and published with regression tests, credited as finder in the advisory text.
+Three issues found and fixed in [nexus-memory](https://github.com/Neboy72/nexus-memory), published with regression tests and credited in the advisory text.
 
-| Advisory | Issue | Severity | Fixed in |
+| Advisory | What was wrong | Severity | Fixed in |
 |---|---|---|---|
-| [GHSA-2h94-xx3x-chrr](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-2h94-xx3x-chrr) | Guardrail path rules never matched Windows paths — protected subpaths and parent deletes were allowed | High | 0.22.35 |
+| [GHSA-2h94-xx3x-chrr](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-2h94-xx3x-chrr) | Guardrail path rules never matched Windows paths, so protected subpaths and parent deletes were allowed | High | 0.22.35 |
 | [GHSA-m446-mvgq-w52p](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-m446-mvgq-w52p) | Cubic backtracking in the destructive-command patterns of the pre-execution check | Moderate | 0.22.34 |
 | [GHSA-455p-688x-56r8](https://github.com/Neboy72/nexus-memory/security/advisories/GHSA-455p-688x-56r8) | Quadratic regex in wikilink extraction (CVSS 3.1: 6.5) | Moderate | 0.22.32 |
 
 **Write-up:** [Three security advisories in an agent memory layer](writeups/nexus-memory-advisories.md) — how each was found, the measured curve, the fix, and where every number can be checked.
 
-## Selected upstream contributions
+## Research & benchmarks
 
-Sorted by weight: named organization, a quantified finding, a fix.
+One fake endpoint, the same measurement for every client. No API keys, no spend; anyone can rerun.
 
-| Project | What I found or fixed | Status |
-|---|---|---|
-| [crewAI](https://github.com/crewAIInc/crewAI) | Three retry layers stack, so **one 429 becomes 27 identical requests** | Reported [#8332](https://github.com/crewAIInc/crewAI/issues/8332) · fix [#8333](https://github.com/crewAIInc/crewAI/pull/8333) open |
-| [Hugging Face smolagents](https://github.com/huggingface/smolagents) | Client retries and `ApiModel` retries multiply — **one rate limit becomes 9 requests**; `Retrying` ignores `Retry-After` and the first retry already waits 2–3× `wait_seconds` | Reported [#3034](https://github.com/huggingface/smolagents/issues/3034), [#3037](https://github.com/huggingface/smolagents/issues/3037) · fix [#3036](https://github.com/huggingface/smolagents/pull/3036) open |
-| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | **3 plugins added to the official plugin catalog** — degeneracy-guard, provenance-gate, skill-lineage; core fixes filed for repetition loops, for a stream hook that cannot ask a response to stop, and for a missing `platform` in the tool-path hooks | **4 merged (UTC), all by @teknium1** ([#141341](https://github.com/NousResearch/hermes-agent/pull/141341) 2026-10-20, [#141935](https://github.com/NousResearch/hermes-agent/pull/141935) 2026-10-20, [#142381](https://github.com/NousResearch/hermes-agent/pull/142381) 2026-10-24, [#144339](https://github.com/NousResearch/hermes-agent/pull/144339) 2026-10-25) · 4 core PRs open ([#141479](https://github.com/NousResearch/hermes-agent/pull/141479), [#142974](https://github.com/NousResearch/hermes-agent/pull/142974), [#144657](https://github.com/NousResearch/hermes-agent/pull/144657), [#141340](https://github.com/NousResearch/hermes-agent/pull/141340)) |
-| [NVIDIA NeMo Agent Toolkit](https://github.com/NVIDIA/NeMo-Agent-Toolkit) | A tool call whose streamed arguments were cut off still executed: a 40-line `write_file` wrote **16 lines** and the agent answered "Done." — in `tool_calling_agent`, and in `react_agent` with `use_native_tool_calling` | **2 merged** ([#2551](https://github.com/NVIDIA/NeMo-Agent-Toolkit/pull/2551) 2026-11-04, [#2553](https://github.com/NVIDIA/NeMo-Agent-Toolkit/pull/2553) 2026-11-04), both fixes authored in the merged commits · backport asked for on [nemo-helix#3693](https://github.com/NVIDIA-NeMo/nemo-helix/issues/3693) |
-| [LangChain.js](https://github.com/langchain-ai/langchainjs) | Truncated streamed tool-call arguments are repaired into a valid-looking tool call instead of being dropped | [#11994](https://github.com/langchain-ai/langchainjs/pull/11994) open |
-| [OpenAI Codex](https://github.com/openai/codex) | A streamed reply that turns into a repetition loop runs to the end — the CLI sends no output cap | [#55279](https://github.com/openai/codex/issues/55279) open |
+- **[agent-faultbench](https://github.com/simin-yuan/agent-faultbench)** — an agent's self-report says it did A, the write on disk says it did B. A tool call cut off inside line 17 still executed: **866 of 2,120 bytes** written, nothing raised. The rows reproducing that defect are the ones fixed upstream in NeMo Agent Toolkit ([#2550](https://github.com/NVIDIA/NeMo-Agent-Toolkit/issues/2550), [#2552](https://github.com/NVIDIA/NeMo-Agent-Toolkit/issues/2552) → #2551, #2553 above). Runs archived: [10.5281/zenodo.24143645](https://doi.org/10.5281/zenodo.24143645).
+- **[agent-double-exec-bench](https://github.com/simin-yuan/agent-double-exec-bench)** (archived; now `suites/double-exec`) — seven frameworks against a server that fails on purpose: one 429 becomes **27 identical requests** in CrewAI, 9 in smolagents, 3 in most others; only CrewAI re-runs the tool, three times.
+- **[agent-runaway-bench](https://github.com/simin-yuan/agent-runaway-bench)** (archived; now `suites/runaway`) — when the model loops inside one reply, **six clients across five frameworks return the whole 300,048-character loop as the answer**; Hermes Agent's own repetition detector stopped at 16,168 characters.
+- **[agent-cutoff-bench](https://github.com/simin-yuan/agent-cutoff-bench)** (archived; now `suites/cutoff`) — a tool call whose arguments were cut off still runs: LangGraph writes **16 of 40 lines** and reports success.
+- **[retrieval-abstention-bench](https://github.com/simin-yuan/retrieval-abstention-bench)** — zero dependency, no network: the retriever declines **86.0%** of questions that are unanswerable by construction against **3.3%** of the answerable set, a **+82.7 point** gap (95% bootstrap CI +77.7 to +87.3).
+- **[greencheck](https://github.com/simin-yuan/greencheck)** — mutation testing for validators, metrics and quality gates: a check is not evidence until it has been observed to react to inputs known to differ.
 
-Ecosystem fixes, merged or reported upstream:
+Raw records for the three suites: [10.5281/zenodo.23808696](https://doi.org/10.5281/zenodo.23808696) — 721 files, CC-BY-4.0.
 
-| Project | What I found or fixed | Status |
-|---|---|---|
-| [SchemaStore](https://github.com/SchemaStore/schemastore) | `package.json` accepted an empty `version` string; two `cargo.json` constraints let through detailed dependencies cargo rejects | [#6421](https://github.com/SchemaStore/schemastore/pull/6421) merged · [#6394](https://github.com/SchemaStore/schemastore/issues/6394), [#6435](https://github.com/SchemaStore/schemastore/issues/6435) reported, fixed upstream |
-| [scamgate](https://github.com/odaiameera/scamgate) | A long command line kept `extract()` busy for **about 40 seconds**; it now reads call-like text in one pass | [#21](https://github.com/odaiameera/scamgate/pull/21), [#22](https://github.com/odaiameera/scamgate/pull/22) merged |
-| [nexus-memory](https://github.com/Neboy72/nexus-memory) | Reported **3 vulnerabilities** and wrote the fixes; credited in all three advisories — guardrail path rules that never matched Windows paths (high), cubic backtracking in the destructive-command patterns, and ReDoS in wikilink extraction; Windows import failure and a test-portability fix ([#12](https://github.com/Neboy72/nexus-memory/pull/12), open) | [#10](https://github.com/Neboy72/nexus-memory/issues/10), [#11](https://github.com/Neboy72/nexus-memory/pull/11), [#12](https://github.com/Neboy72/nexus-memory/pull/12) open · advisories published 2026-10-28 |
-| [Vercel](https://github.com/vercel/vercel) | `vercel.json` declares draft-04 but uses draft-06+ keywords, so strict validators reject it | [#17639](https://github.com/vercel/vercel/issues/17639) open |
-| [Compose spec](https://github.com/compose-spec/compose-go) | No schema constraint requires `image`, `build` or `provider`, yet the loader rejects a service with none of them | [#933](https://github.com/compose-spec/compose-go/issues/933) open |
+### Hermes plugins (official catalog)
 
-Projects listed in **4 curated awesome lists** through 6 merged pull requests.
+- **[hermes-degeneracy-guard](https://github.com/simin-yuan/hermes-degeneracy-guard)** — refuses degenerate, repetition-looped tool calls before they execute; 39 legitimate payloads in the test corpus, none of them prompts.
+- **[hermes-provenance-gate](https://github.com/simin-yuan/hermes-provenance-gate)** — flags memory and skill writes that claim a user decision the user's own words do not back; precision 1.000 (34/34), recall 0.694 (34/49).
+- **[hermes-skill-lineage](https://github.com/simin-yuan/hermes-skill-lineage)** — records where each skill came from, hash-chained, so a self-rewriting agent's skill set can be audited; 131 passed, 1 skipped.
 
-## Original work
+Verification tooling also lives in [precheck](https://github.com/simin-yuan/precheck) (hash-locked checks that ask whether they could have failed), [agent-pushgate](https://github.com/simin-yuan/agent-pushgate) (leak and push-range gates whose self-tests must go red when sabotaged) and [authority-chain](https://github.com/simin-yuan/authority-chain) (hash-chained event log with base-revision tickets).
 
-### Benchmarks — one fake endpoint, the same measurement for every client
+## Papers
 
-- **[agent-double-exec-bench](https://github.com/simin-yuan/agent-double-exec-bench)** — seven agent frameworks against a server that fails on purpose: **one 429 becomes 27 identical requests**, and some frameworks decide whether to retry by reading the error text.
-- **[agent-runaway-bench](https://github.com/simin-yuan/agent-runaway-bench)** — what clients do when the model loops mid-reply: **five clients across four frameworks return the entire loop as the final answer — 300,048 characters — and none of them stops.**
-- **[agent-cutoff-bench](https://github.com/simin-yuan/agent-cutoff-bench)** — a tool call cut off mid-argument still runs: LangGraph writes **16 of 40 lines** to disk and reports success.
-- **[retrieval-abstention-bench](https://github.com/simin-yuan/retrieval-abstention-bench)** — zero-dependency abstention test: the retriever declines **86.0%** of questions that are unanswerable by construction against **3.3%** of the answerable set, a **+82.7 point** gap (95% bootstrap CI +77.7 to +87.3).
-- **The runs behind those numbers are archived**: [10.5281/zenodo.23808696](https://doi.org/10.5281/zenodo.23808696) — *Agent failure-mode benchmarks: raw measurement records*, 721 files, CC-BY-4.0.
-
-### Hermes plugins (in the official catalog)
-
-- **[hermes-degeneracy-guard](https://github.com/simin-yuan/hermes-degeneracy-guard)** — refuses degenerate, repetition-looped tool calls before they execute; **39 legitimate payloads** in the test corpus, and none of them prompts.
-- **[hermes-provenance-gate](https://github.com/simin-yuan/hermes-provenance-gate)** — flags memory and skill writes that claim a user decision the user's own words do not back; **precision 1.000 (34/34), recall 0.694 (34/49)** on a hand-labelled set.
-- **[hermes-skill-lineage](https://github.com/simin-yuan/hermes-skill-lineage)** — records where each skill came from, hash-chained, so a self-rewriting agent's skill set can be audited; **131 passed, 1 skipped** at v0.1.8.
-
-### Verification tools
-
-- **[greencheck](https://github.com/simin-yuan/greencheck)** — mutation testing for quality gates and metrics: the bundled demo gate catches most mutations and still lets **one bad configuration through** — the difference between "the check ran" and "the check worked".
-- **[precheck](https://github.com/simin-yuan/precheck)** — freezes a check before an agent runs, hash-locked, then asks whether that check could have failed at all. Zero dependencies, no network.
-- **[agent-pushgate](https://github.com/simin-yuan/agent-pushgate)** — leak, commit-message, push-range and ledger gates whose self-tests must go red when sabotaged; **68 self-test cases** across five gates.
-- **[authority-chain](https://github.com/simin-yuan/authority-chain)** — hash-chained SQLite event log with base-revision tickets and countersigning for protected documents; **all 57 error codes** are exercised by a test.
-
-### Audited, and self-auditing
-
-- **[self-auditing-agent](https://github.com/simin-yuan/self-auditing-agent)** — a public audit log where every claim carries a rerunnable command; `gatecheck` ships inside it.
-
-## Research
-
-Constraint recovery in two-agent language-model loops — measured, not asserted:
-
-- *Volume or Coupling? A Scale-Dependent Dissociation in Constraint Recovery of Language-Model Loops* — Zenodo, [10.5281/zenodo.21200851](https://doi.org/10.5281/zenodo.21200851)
-  - Accepted versions at four NeurIPS 2026 workshops: New in ML, EvoRobust, Resource-Aware Agentic AI (RAAAI), and CL4FMAgents.
-- *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop* — Research Square, [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1)
+- *Volume or Coupling? A Scale-Dependent Dissociation in Constraint Recovery of Language-Model Loops* — Zenodo, [10.5281/zenodo.21200851](https://doi.org/10.5281/zenodo.21200851). Accepted versions at four NeurIPS 2026 workshops.
+- *Recovery or Repetition? Feedback Policy and Verbatim Relay in a Two-Agent Language-Model Loop* — Research Square, [10.21203/rs.3.rs-11287076/v1](https://doi.org/10.21203/rs.3.rs-11287076/v1).
 
 ## How I work
 
 - **Evidence before assertion.** Every claim in these repos ships with the command that reproduces it. When the evidence does not support the claim, the claim goes.
 - **Gates that can say no.** A check that has never failed is a check that never ran, so I sabotage my own gates to prove they go red.
-- **Publish failures.** The MISS, the regression and the broken version stay in the record. A repository that only shows wins is not evidence.
----
+- **Publish failures.** The miss, the regression and the broken version stay in the record. A repository that only shows wins is not evidence.
 
-Part of the agent reliability toolkit → [agent-faultbench](https://github.com/simin-yuan/agent-faultbench)
+## Contact
+
+[X @SiminYuanAI](https://x.com/SiminYuanAI) · [lightemerge.com](https://lightemerge.com)
